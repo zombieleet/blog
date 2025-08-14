@@ -18,7 +18,7 @@
     "url": "https://github.com/zombieleet/blog/issues"
   },
   "homepage": "https://github.com/zombieleet/blog#readme",
-  "dependencies": {
-    "hugo-cli": "^0.14.0"
+  "devDependencies": {
+    "hugo-extended": "^0.148.2"
   }
 }
