@@ -3,5 +3,27 @@ languageCode = 'en-us'
 theme='PaperMod'
 title = 'Notes on Code & Systems — Backends, and distributed things'
 
+[params]
+ShowShareButtons = true
+ShareButtons = ["x", "linkedin"]
+
+# Home Info Mode
+[params.homeInfoParams]
+Title = "Hi there 👋"
+Content = "Welcome to my blog where I write about backends, distributed systems, system design and software architecture."
+
+# Social Icons
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/zombieleet"
+
+[[params.socialIcons]]
+name = "twitter"
+url = "https://twitter.com/fmt_sprintf"
+
+[[params.socialIcons]]
+name = "linkedin"
+url = "https://linkedin.com/in/victory-osikwemhe"
+
 [markup.goldmark.renderer]
 unsafe = true
