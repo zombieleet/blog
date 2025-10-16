@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/zombieleet/blog#readme",
   "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^11.9.0",
     "hugo-extended": "^0.148.2"
   }
 }

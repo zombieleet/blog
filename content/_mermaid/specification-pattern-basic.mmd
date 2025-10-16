@@ -1,0 +1,30 @@
+classDiagram
+    direction TB
+    class LoanApplication {
+        +CreditScore int
+        +MonthlyIncome float
+        +MonthlyRepayment float
+        +ActiveLoans int
+    }
+
+    class AndSpec {
+        +IsSatisfiedBy(app: LoanApplication) : bool
+    }
+
+    class CreditScoreSpec {
+        +IsSatisfiedBy(app: LoanApplication) : bool
+    }
+
+    class IncomeSpec {
+        +IsSatisfiedBy(app: LoanApplication) : bool
+    }
+
+    class NoActiveLoanSpec {
+        +IsSatisfiedBy(app: LoanApplication) : bool
+    }
+
+    LoanApplication --> AndSpec : evaluated
+    
+    AndSpec --> CreditScoreSpec : uses
+    AndSpec --> IncomeSpec : uses
+    AndSpec --> NoActiveLoanSpec : uses

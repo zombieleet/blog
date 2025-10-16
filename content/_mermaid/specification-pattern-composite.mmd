@@ -1,0 +1,45 @@
+classDiagram
+  direction TB
+    class LoanApplication {
+        +CreditScore int
+        +MonthlyIncome float
+        +MonthlyRepayment float
+        +ActiveLoans int
+    }
+
+    class AndSpec {
+        +left Specification
+        +right Specification
+        +IsSatisfiedBy(a: LoanApplication) bool
+    }
+
+    class OrSpec {
+        +left Specification
+        +right Specification
+        +IsSatisfiedBy(a: LoanApplication) bool
+    }
+
+    class NotSpec {
+        +inner Specification
+        +IsSatisfiedBy(a: LoanApplication) bool
+    }
+
+    class ExceptionalCreditSpec {
+        +IsSatisfiedBy(a: LoanApplication) bool
+    }
+
+    class StrongIncomeCoverageSpec {
+        +IsSatisfiedBy(a: LoanApplication) bool
+    }
+
+    class HasActiveLoansSpec {
+        +IsSatisfiedBy(a: LoanApplication) bool
+    }
+
+
+    LoanApplication --> AndSpec : evaluated
+    AndSpec --o OrSpec : left
+    OrSpec --o ExceptionalCreditSpec : left
+    OrSpec --o StrongIncomeCoverageSpec : right
+    AndSpec --o NotSpec : right
+    NotSpec --o HasActiveLoansSpec : inner

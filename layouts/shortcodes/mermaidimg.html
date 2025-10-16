@@ -1,0 +1,5 @@
+{{- $name := .Get 0 -}}
+<picture>
+    <source type="image/svg+xml" srcset="{{ printf "/diagrams/%s.svg" $name }}">
+    <img src="{{ printf "/diagrams/%s.png" $name }}" alt="{{ $name }}" loading="lazy">
+</picture>

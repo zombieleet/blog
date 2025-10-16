@@ -1,0 +1,28 @@
+sequenceDiagram
+    autonumber
+    participant Alice as Alice (Node A)
+    participant AppA as App (Node A)
+    participant Store as Account Store (shared)
+    participant AppB as App (Node B)
+    participant Bob as Bob (Node B)
+
+    Note over Store: Initial state: John=$400, Jane=$100, Jake=$200
+
+    par Alice path
+        Alice->>AppA: Transfer $200 (John -> Jane)
+        AppA->>Store: READ John balance
+        Store-->>AppA: 200 OK, balance=400
+        Note right of AppA: Tentative: John=200\nJane=300
+        AppA->>Store: WRITE John=200
+        AppA->>Store: WRITE Jane=300
+    and Bob path
+        Bob->>AppB: Transfer $150 (John -> Jake)
+        AppB->>Store: READ John balance
+        Store-->>AppB: 200 OK, balance=400
+        Note right of AppB: Tentative: John=250\nJake=350
+        AppB->>Store: WRITE John=250
+        AppB->>Store: WRITE Jake=350
+    end
+
+    Note over Store: ❌ Final persisted state (wrong): John=$250, Jane=$300, Jake=$350
+    Note over Store: ✔ Correct serial outcome: John=$50, Jane=$300, Jake=$350

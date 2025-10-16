@@ -1,0 +1,66 @@
+classDiagram
+    direction LR
+    class LoanApplication {
+        +CreditScore int
+        +MonthlyIncome float
+        +MonthlyRepayment float
+        +ActiveLoans int
+    }
+
+    class Factory {
+        +Build(LoanApplication, Specification) Decision
+    }
+
+    class Decision {
+        <<interface>>
+        +Kind() string
+        +Message() string
+    }
+
+    class Approved {
+        +Limit float64
+        +Kind() string
+        +Message() string
+    }
+
+    class Rejected {
+        +Kind() string
+        +Message() string
+    }
+
+    class AndSpec1["AndSpec (outer)"] {
+        +left CreditScoreSpec
+        +right AndSpec2
+        +IsSatisfiedBy(app) bool
+    }
+
+    class AndSpec2["AndSpec (inner)"] {
+        +left IncomeSpec
+        +right NoActiveLoanSpec
+        +IsSatisfiedBy(app) bool
+    }
+
+    class CreditScoreSpec {
+        +IsSatisfiedBy(app) bool
+    }
+
+    class IncomeSpec {
+        +IsSatisfiedBy(app) bool
+    }
+
+    class NoActiveLoanSpec {
+        +IsSatisfiedBy(app) bool
+    }
+
+    Factory --> LoanApplication : uses
+    Factory --> AndSpec1 : evaluates
+    Factory --> Decision : creates
+    
+    Decision <|-- Approved : implements
+    Decision <|-- Rejected : implements
+    
+    AndSpec1 --> CreditScoreSpec : uses
+    AndSpec1 --> AndSpec2 : uses
+    
+    AndSpec2 --> IncomeSpec : uses
+    AndSpec2 --> NoActiveLoanSpec : uses

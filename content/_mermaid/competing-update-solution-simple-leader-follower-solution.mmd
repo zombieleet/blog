@@ -1,0 +1,22 @@
+sequenceDiagram
+    autonumber
+    participant Alice as Alice (Node A)
+    participant NodeA as App (Node A)
+    participant Leader as Node B (Leader)
+    participant Store as Account Store
+
+    Note over Store: Initial balances:<br/>John=$400, Jane=$100, Jake=$200
+
+    Alice->>NodeA: Transfer $200 (John → Jane)
+    NodeA->>Leader: Forward request
+    Bob->>Leader: Transfer $150 (John → Jake)
+
+    Note over Leader: Leader (Node B) queues both requests<br/>and applies them in order
+
+    Leader->>Store: Deduct $200 from John<br/>Credit $200 to Jane
+    Store-->>Leader: OK (John=200, Jane=300, Jake=200)
+
+    Leader->>Store: Deduct $150 from John<br/>Credit $150 to Jake
+    Store-->>Leader: OK (John=50, Jane=300, Jake=350)
+
+    Note over Store: ✅ Final state:<br/>John=$50, Jane=$300, Jake=$350

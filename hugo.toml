@@ -2,3 +2,6 @@ baseURL = 'https://victhree.wtf/'
 languageCode = 'en-us'
 theme='PaperMod'
 title = 'Notes on Code & Systems — Backends, and distributed things'
+
+[markup.goldmark.renderer]
+unsafe = true
