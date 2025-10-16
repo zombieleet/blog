@@ -1,6 +1,6 @@
 +++
 title = 'Specification Pattern'
-date = 2025-10-16T10:00:00+02:00
+date = 2025-10-16T09:00:00+02:00
 draft = false
 tags = ['DDD', 'Specification Pattern', 'Software Architecture']
 categories = ['Software Architecture', 'DDD']
