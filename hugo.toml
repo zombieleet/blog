@@ -1,11 +1,21 @@
 baseURL = 'https://victhree.wtf/'
 languageCode = 'en-us'
 theme='PaperMod'
+
+[module]
+  [[module.imports]]
+    path = 'github.com/plausible/hugo-plausible'
 title = 'Notes on Code & Systems — Backends, and distributed things'
 
 [params]
 ShowShareButtons = true
 ShareButtons = ["x", "linkedin"]
+
+  [params.analytics]
+    [params.analytics.plausible]
+      domain = "victhree.wtf"
+      scriptURI = "https://plausible.io/js/pa-69Ch3NvOfSaJTOX_kLOve.js"
+      hashedScript = true
 
 # Home Info Mode
 [params.homeInfoParams]
