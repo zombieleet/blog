@@ -1,4 +1,4 @@
-baseURL = 'https://softwarenotes.netlify.app/'
+baseURL = 'https://victhree.wtf/'
 languageCode = 'en-us'
 theme='PaperMod'
 
@@ -10,7 +10,7 @@ ShareButtons = ["x", "linkedin"]
 
   [params.analytics]
     [params.analytics.plausible]
-      domain = "softwarenotes.netlify.app"
+      domain = "victhree.wtf"
       scriptURI = "https://plausible.io/js/pa-69Ch3NvOfSaJTOX_kLOve.js"
       hashedScript = true
 
